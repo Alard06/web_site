@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+
+{% block 'title' %} Home Page {% endblock 'title' %}
+    
+{% block 'content' %}
+
+<div class="position-absolute top-50 start-50 translate-middle text-center ">
+    <p class='fs-1 text-center'>Hello my friend! This site generates random numbers and passwords </p>
+    <p class='fs-8 text-center' > This site is developed by Alard06 </p>
+    <a href='{%url "generate_password" %}'> <button type="button" class="btn btn-primary" href='{%url "generate_password" %}'>Password</button></a>
+    <a href='{%url "generate_password" %}'> <button type="button" class="btn btn-primary" href='{%url "numbers_generate" %}'>Number</button></a>
+</div>
+
+    <p></p>
+{% endblock 'content' %}
+    

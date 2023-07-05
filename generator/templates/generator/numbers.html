@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{%block 'title'%} Passwords generates {%endblock%}
+
+
+{% block 'content' %}
+<div class="position-absolute top-50 start-50 translate-middle">
+
+    <div class="text-center" style=''>
+        {% if info.0 != Null %}
+            <p class='fs-1'>Your number(s)!</p> 
+        {% for obj in info.0 %}
+            <p class='fs-2'> {{obj}} </p>   
+        {% endfor %}
+            
+        {% else %}
+            <p class='fs-1'>This web page generates your future numbers</p> 
+        {% endif %}
+    </div>
+
+    <form method='POST'>
+        {% csrf_token %}
+        
+        
+        <div class="input-group flex-nowrap" style='margin-top:15px'>
+            <span class="input-group-text" id="addon-wrapping">Numbers:</span>
+            <input value = '{%if not info.1 %}1{% else %}{{info.1}}{%endif%}' type="text" class="form-control" placeholder="Number of numbers" aria-label="Number of numbers" aria-describedby="addon-wrapping", name='numbers'>
+        </div>
+        <div class="input-group flex-nowrap" style='margin-top:15px'>
+            <span class="input-group-text" id="addon-wrapping">Min number</span>
+            <input value = '{%if not info.2 %}1{% else %}{{info.2}}{%endif%}' type="text" class="form-control" placeholder="Min number" aria-label="Min number" aria-describedby="addon-wrapping", name='min_num'>
+        </div>
+
+        <div class="input-group flex-nowrap" style='margin-top:15px'>
+            <span class="input-group-text" id="addon-wrapping">Max number</span>
+            <input value = '{% if not info.3 %}5{% else %}{{info.3}}{%endif%}' type="text" class="form-control" placeholder="Max number" aria-label="Max number" aria-describedby="addon-wrapping", name='max_num'>
+        </div>
+
+        <div class="input-group flex-nowrap" style='margin-top:15px'>
+            <span class="input-group-text" id="addon-wrapping">Decimal Places</span>
+            <input value = '{%if not info.4 %}2{%else%}{{info.4}}{%endif%}' type="text" class="form-control" placeholder="Decimal Places" aria-label="Decimal Places" aria-describedby="addon-wrapping", name='decimal_places'>
+        </div>
+
+        <ul> {{form.float_or_int}} if float number, checkbox on  </ul>
+        
+        <div class="d-grid gap-2" style='margin-top:20px'>
+            <button class="btn btn-primary">Generate!</button>
+        </div>
+
+    </form>
+</div>
+{% endblock 'content' %}
+    
+
